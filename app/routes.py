@@ -4,7 +4,7 @@ from app.models import User, Data, Diff, Challenge
 
 parser = reqparse.RequestParser()
 parser.add_argument('username', type=str, help='Only accepts valid site user IDs.')
-parser.add_argument('stats', type=str, choices=stats_choices, help='Requestable stats available at web.site.')
+parser.add_argument('challenges', help='Currently Weekly Challenges')
 
 # u = User.query.get(21)
 
@@ -44,4 +44,13 @@ class UserSearch(Resource):
             }, 200
 
 
+class Challenges(Resource):
+    def get(self):
+        output = {}
+        for c in Challenge.query.all():
+            output[c.name] = c.details
+        return output, 200
+
+
 api.add_resource(UserSearch, '/user')
+api.add_resource(Challenges, '/weekly_challenge')
