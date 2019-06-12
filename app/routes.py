@@ -10,7 +10,7 @@ parser.add_argument('challenges', help='Currently Weekly Challenges')
 
 def abort_user_search(user_id):
     if not User.query.filter_by(r6_user=user_id).first():
-        abort(404, message=f'User with ID {user_id} does not exist')
+        abort(404, message=f'User with name {user_id} does not exist')
 
 
 class UserSearch(Resource):
