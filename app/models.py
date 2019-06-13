@@ -1,9 +1,5 @@
-from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime, timedelta
-from app import db, app
+from app import db
 from flask_login import UserMixin
-from time import time
-import jwt
 
 
 class User(UserMixin, db.Model):
@@ -14,6 +10,7 @@ class User(UserMixin, db.Model):
     uplay_data = db.relationship('Data', backref='author', lazy='dynamic')
     weekly_diff = db.relationship('Diff', backref='author', lazy='dynamic')
     region_id = db.Column(db.Integer, db.ForeignKey('region.id'))
+    platform_id = db.Column(db.Integer, db.ForeignKey('platform.id'))
 
 
 class Data(db.Model):
@@ -53,6 +50,7 @@ class Region(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ident = db.Column(db.String(4))
     name = db.Column(db.String(64))
+    users = db.relationship('User', backref='region', lazy='dynamic')
 
     def __repr__(self):
         return f'<Region: {self.ident.upper()}>'
@@ -61,6 +59,7 @@ class Region(db.Model):
 class Platform(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(8))
+    users = db.relationship('User', backref='platform', lazy='dynamic')
 
     def __repr__(self):
         return f'<Platform: {self.name.upper()}>'
