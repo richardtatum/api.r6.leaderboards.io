@@ -2,6 +2,7 @@ from app import api
 from flask_restful import Resource, reqparse, abort
 from app.models import User, Data, Diff, Challenge
 import os
+from config import rank_list, time_format
 
 parser = reqparse.RequestParser()
 parser.add_argument('username', type=str, help='Only accepts valid site user IDs.')
@@ -31,8 +32,9 @@ class UserSearch(Resource):
             'Username': u.r6_user,
             'Platform': u.platform.name,
             'Region': u.region.name,
+            'Rank': rank_list[d.rank],
             'Overall': {
-                    'Time Played': d.time_played,
+                    'Time Played': time_format(d.time_played),
                     'Kills': d.kills,
                     'Deaths': d.deaths,
                     'K/D Ratio': float(d.kd_ratio),
@@ -40,14 +42,14 @@ class UserSearch(Resource):
                     'Waifu': d.waifu,
                 },
             'Weekly': {
-                    'Time Played': w.time_played,
+                    'Time Played': time_format(w.time_played),
                     'Kills': w.kills,
                     'Deaths': w.deaths,
                     'K/D Ratio': float(w.kd_ratio),
                     'W/L Ratio': float(w.wl_ratio),
                 },
             'profile': u.avatar,
-            'waifu_img': f'https://cdn.r6.leaderboards.io/images/operator_images/{d.waifu}.png'
+            'waifu_img': f'https://cdn.r6.leaderboards.io/images/operator_images/{d.waifu.lower()}.png'
             }, 200
 
 
