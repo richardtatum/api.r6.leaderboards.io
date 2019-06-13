@@ -1,5 +1,4 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
@@ -17,4 +16,3 @@ class Config(object):
     SQLALCHEMY_POOL_SIZE = 100
     SQLALCHEMY_POOL_RECYCLE = 170
     SQLALCHEMY_POOL_TIMEOUT = 120
-
