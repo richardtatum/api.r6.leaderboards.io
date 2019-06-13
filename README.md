@@ -14,17 +14,17 @@ Install serverless
 
 Add additional serverless plugins
 
-`
+```bash
 sls plugin install -n serverless-wsgi
 sls plugin install -n serverless-python-requirements
-`
+```
 
 Set AWS authentication tokens
 
-`
+```bash
 export AWS_ACCESS_KEY_ID=<Access key ID>
 export AWS_SECRET_ACCESS_KEY=<Secret access key>
-`
+```
 
 Deploy to AWS
 
