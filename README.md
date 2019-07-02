@@ -1,5 +1,7 @@
 # leaderboard_api
-API for leaderboards.io
+Basic API for leaderboards.io that is used predomenantly with the [R6 Discord Bot](https://github.com/richardtatum/r6_discord_bot)
+
+API tokens available on request from our [contact form](https://r6.leaderboards.io/contact). 
 
 ## Deploy
 
@@ -29,3 +31,9 @@ export AWS_SECRET_ACCESS_KEY=<Secret access key>
 Deploy to AWS
 
 `sls deploy`
+
+
+## Authors
+
+* **Richard Tatum** - *Python/API Code* - [RichardTatum](https://github.com/richardtatum)
+* **Josh Edney** - *Architecture/Serverless integration* - [JoshEdney](https://github.com/joshedney)
