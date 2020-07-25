@@ -1,4 +1,4 @@
-# leaderboard_api
+# api.r6.leaderboards.io
 Basic API for r6.leaderboards.io that is used predominantly with the [R6 Discord Bot](https://github.com/richardtatum/r6_discord_bot)
 
 API tokens available on request from our [contact form](https://r6.leaderboards.io/contact). 
